@@ -19,7 +19,7 @@ import third from '../images/third.png'
 					<div class="max fcol">
 						<h1>Encuentra a tu roomie ideal en Perú con Roomiesfy</h1>
 						<p>La app que conecta a personas compatibles para compartir hogar de forma segura, eficiente y divertida.</p>
-						<div class="fc">
+						<div class="fc btns">
 							<div class="btn">Mira el demo</div>
 							<div class="btn btn-outline">Sé el primero en enterarte</div>
 						</div>
@@ -74,6 +74,8 @@ import third from '../images/third.png'
 		overflow: hidden;
 		img {
 			width: 100%;
+			height: 100%;
+			aspect-ratio: unset;
 			position: absolute;
 			z-index: -1;
 			inset: 0;
@@ -114,14 +116,13 @@ import third from '../images/third.png'
 		.h1 {
 			margin-bottom: 48px;
 		}
-	}
-	.articles {
-		display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 36px;
+		.articles {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: 36px;
+		}
 	}
 	.card {
-
 		background: var(--gray);
 		border-radius: 48px;
 		border: 1px solid var(--blue);
@@ -163,6 +164,40 @@ import third from '../images/third.png'
 		span {
 			color: var(--blue);
 			background: white;
+		}
+	}
+	@media (max-width: 1000px) {
+		.whatis {
+			flex-direction: column;
+		}
+		.beneficios {
+			.articles {
+				grid-template-columns: 1fr;
+			}
+		}
+		.card:nth-child(3) {
+			grid-column: unset;
+			max-width: unset;
+		}
+	}
+	@media (max-width: 700px) {
+		.gradient {
+			padding: 64px 16px;
+		}
+		.whatis {
+			margin-block: 32px;
+			align-items: center;
+			text-align: center;
+		}
+		.btns {
+			flex-direction: column;
+			align-items: stretch;
+			text-align: center;
+		}
+		.card img {
+			height: unset;
+			width: 38%;
+			align-self: flex-end;
 		}
 	}
 </style>

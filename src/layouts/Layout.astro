@@ -126,12 +126,17 @@ const { title } = Astro.props;
 	.btn-outline:hover {
 		background: var(--gray)
 	}
-	.btn:active {
+	button:active, .btn:active {
 		scale: 0.95;
 	}
 	.ma {
 		max-width: 1272px;
 		margin: auto;
+	}
+	@media (max-width: 700px) {
+		:root, input, button {
+			font-size: 18px;
+		}
 	}
 	/* :root {
 		--accent: 136, 58, 234;
