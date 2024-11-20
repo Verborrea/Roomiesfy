@@ -95,30 +95,31 @@ const { title } = Astro.props;
 	}
 	.g32 { gap: 32px }
 	.p32 { padding: 32px }
+
 	.grow {
 		flex: 1;
 	}
-
 	.center {
 		text-align: center;
 	}
-
 	.deco {
 		position: absolute;
 		z-index: -1;
 	}
 	.btn {
-		padding: 20px 35px;
+		padding: 16px 24px;
 		color: var(--blue);
 		background: var(--sky);
-		border: 1px solid var(--sky);
+		
 		border-radius: 14px;
 		transition: 0.2s ease-out;
 		cursor: pointer;
 	}
 	.btn-outline {
+		padding: 14px 22px;
 		border: 1px solid var(--blue);
 		background: transparent;
+		backdrop-filter: blur(4px);
 	}
 	.btn:hover {
 		background: #53bbaf;
@@ -138,30 +139,4 @@ const { title } = Astro.props;
 			font-size: 18px;
 		}
 	}
-	/* :root {
-		--accent: 136, 58, 234;
-		--accent-light: 224, 204, 250;
-		--accent-dark: 49, 10, 101;
-		--accent-gradient: linear-gradient(
-			45deg,
-			rgb(var(--accent)),
-			rgb(var(--accent-light)) 30%,
-			white 60%
-		);
-	}
-	html {
-		font-family: system-ui, sans-serif;
-		background: #13151a;
-	}
-	code {
-		font-family:
-			Menlo,
-			Monaco,
-			Lucida Console,
-			Liberation Mono,
-			DejaVu Sans Mono,
-			Bitstream Vera Sans Mono,
-			Courier New,
-			monospace;
-	}*/
 </style>

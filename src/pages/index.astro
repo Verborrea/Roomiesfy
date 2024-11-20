@@ -99,7 +99,7 @@ import third from '../images/third.png'
 		}
 		h1 {
 			font-size: 60px;
-			line-height: 60px;
+			line-height: 1;
 			color: var(--blue);
 		}
 	}
@@ -107,7 +107,7 @@ import third from '../images/third.png'
 		padding: 16px;
 		display: flex;
 		align-items: flex-start;
-		margin-block: 64px;
+		margin-block: 96px;
 		gap: 28px;
 	}
 	.beneficios {
@@ -125,7 +125,8 @@ import third from '../images/third.png'
 	.card {
 		background: var(--gray);
 		border-radius: 48px;
-		border: 1px solid var(--blue);
+		border: 1px solid  #191A23;
+		box-shadow: 0 6px #191A23;
 		padding: 48px;
 		gap: 16px;
 
@@ -137,6 +138,7 @@ import third from '../images/third.png'
 		}
 
 		span {
+			width: fit-content;
 			background: var(--sky);
 			border-radius: 32px;
 			padding: 5px 20px;
@@ -171,9 +173,13 @@ import third from '../images/third.png'
 			flex-direction: column;
 		}
 		.beneficios {
+			align-items: center;
 			.articles {
 				grid-template-columns: 1fr;
 			}
+		}
+		.card {
+			flex-direction: column;
 		}
 		.card:nth-child(3) {
 			grid-column: unset;
@@ -181,6 +187,14 @@ import third from '../images/third.png'
 		}
 	}
 	@media (max-width: 700px) {
+		.h1 {
+			text-align: center;
+		}
+		.hero {
+			h1 {
+				font-size: 40px;
+			}
+		}
 		.gradient {
 			padding: 64px 16px;
 		}
@@ -194,9 +208,12 @@ import third from '../images/third.png'
 			align-items: stretch;
 			text-align: center;
 		}
+		.card {
+			padding: 24px;
+		}
 		.card img {
 			height: unset;
-			width: 38%;
+			width: 40%;
 			align-self: flex-end;
 		}
 	}
