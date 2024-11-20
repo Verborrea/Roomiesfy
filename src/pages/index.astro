@@ -1,0 +1,168 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import { Image } from 'astro:assets';
+
+import hero from '../images/image.png'
+import first from '../images/first.png'
+import second from '../images/second.png'
+import third from '../images/third.png'
+---
+
+<Layout title="Welcome to Astro.">
+	<Header/>
+	<main>
+		<section class="hero rel">
+			<Image src={hero} width={hero.width/2} densities={[1,2]} alt="Chicas japonesas" />
+			<div class="gradient">
+				<div class="space">
+					<div class="max fcol">
+						<h1>Encuentra a tu roomie ideal en Perú con Roomiesfy</h1>
+						<p>La app que conecta a personas compatibles para compartir hogar de forma segura, eficiente y divertida.</p>
+						<div class="fc">
+							<div class="btn">Mira el demo</div>
+							<div class="btn btn-outline">Sé el primero en enterarte</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="whatis ma">
+			<h1 class="h1">¿Qué es Roomiesfy?</h1>
+			<p>“Roomiesfy es la nueva app que facilita la búsqueda de roommates compatibles y seguros en Perú. Diseñada para jóvenes profesionales, estudiantes y cualquier persona que busque y quiera compartir un lugar para vivir con tranquilidad y buena compañía.”</p>
+		</section>
+		<section class="beneficios fcol ma">
+			<h1 class="h1">Beneficios destacados:</h1>
+			<div class="articles">
+				<article class="card fc">
+					<div class="text">
+						<h1 class="fcol"><span>Compatibilidad</span> <span>Asegurada</span></h1>
+						<p>Sistema de matching avanzado que conecta con personas de intereses, hábitos y estilos de vida similares.</p>
+					</div>
+					<Image src={first} width={first.width/2} densities={[1,2]} alt="Chicas japonesas" />
+				</article>
+				<article class="card fc">
+					<div class="text">
+						<h1 class="fcol"><span>Contratos</span> <span>automáticos</span> <span>y seguros</span></h1>
+						<p>Generación de contratos personalizados con soporte legal opcional.</p>
+					</div>
+					<Image src={second} width={second.width/2} densities={[1,2]} alt="Chicas japonesas" />
+				</article>
+				<article class="card fc">
+					<div class="text">
+						<h1 class="fcol"><span>Soporte de IA</span> <span>todo momento</span></h1>
+						<p>Chatbot integrado para responder preguntas sobre los espacios, los roommates y el proceso de alquiler.</p>
+					</div>
+					<Image src={third} width={third.width/2} densities={[1,2]} alt="Chicas japonesas" />
+				</article>
+			</div>
+		</section>
+	</main>
+</Layout>
+
+<style>
+	.h1 {
+		font-weight: 500;
+		flex-shrink: 0;	
+		padding: 4px 20px;
+		border-radius: 32px;
+		background: #A7EDE4;
+		box-shadow: -8px 0px #BBF2EA, -16px 0px #D7F7F3;
+		margin-left: 16px;
+	}
+	.hero {
+		overflow: hidden;
+		img {
+			width: 100%;
+			position: absolute;
+			z-index: -1;
+			inset: 0;
+		}
+		.gradient {
+			padding: 144px 16px;
+			background: linear-gradient(90deg, white, transparent 40%), linear-gradient(0deg, white, transparent 40%);
+			display: flex;
+			justify-content: flex-start;
+		}
+		.space {
+			max-width: 1240px;
+			width: 100%;
+			margin: auto;
+		}
+		.max {
+			max-width: 700px;
+		}
+		.fcol, .fc {
+			gap: 28px;
+		}
+		h1 {
+			font-size: 60px;
+			line-height: 60px;
+			color: var(--blue);
+		}
+	}
+	.whatis {
+		padding: 16px;
+		display: flex;
+		align-items: flex-start;
+		margin-block: 64px;
+		gap: 28px;
+	}
+	.beneficios {
+		padding: 16px;
+		align-items: flex-start;
+		.h1 {
+			margin-bottom: 48px;
+		}
+	}
+	.articles {
+		display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 36px;
+	}
+	.card {
+
+		background: var(--gray);
+		border-radius: 48px;
+		border: 1px solid var(--blue);
+		padding: 48px;
+		gap: 16px;
+
+		.text {
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+			gap: 16px;
+		}
+
+		span {
+			background: var(--sky);
+			border-radius: 32px;
+			padding: 5px 20px;
+			font-weight: 500;
+		}
+		span:nth-child(2) {
+			transform: translateY(-8px);
+		}
+		span:nth-child(3) {
+			transform: translateY(-16px);
+		}
+	}
+	.card:nth-child(2) {
+		background: var(--sky);
+		span {
+			background: white;
+		}
+	}
+	.card:nth-child(3) {
+		color: white;
+		background: var(--blue);
+		justify-self: center;
+		grid-column: 1 / 3;
+		max-width: calc(1208px / 2);
+		span {
+			color: var(--blue);
+			background: white;
+		}
+	}
+</style>

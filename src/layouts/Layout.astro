@@ -1,0 +1,161 @@
+---
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es-PE">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Astro description" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+		<title>{title}</title>
+	</head>
+	<body>
+		<slot />
+	</body>
+</html>
+<style is:global>
+	*, *::after, *::before {
+		margin: 0;
+		box-sizing: border-box;
+	}
+	:root {
+		--blue: #0c2e39;
+		--sky: #76E2D5;
+		--gray: #F3F3F3;
+
+		color-scheme: only light;
+		overflow-y: scroll;
+		overflow-x: hidden;
+		scroll-snap-type: y mandatory;
+		scroll-behavior: smooth;
+		-webkit-tap-highlight-color:  rgba(255, 255, 255, 0); 
+	}
+	:root, input, button {
+		font: 400 20px/1.5 'Poppins', sans-serif;
+	}
+	body {
+		color: black;
+		background: white;
+	}
+	a {
+		color: inherit;
+		text-decoration: none;
+	}
+	video, img, svg {
+		display: block;
+	}
+	video, img {
+		object-fit: cover;
+	}
+	strong {
+		color: var(--text);
+		font-weight: 600;
+	}
+	button {
+		background: transparent;
+		cursor: pointer;
+		display: block;
+		border: 0;
+		padding: 0;
+	}
+	.fc {
+		display: flex;
+		align-items: center;
+	}
+	.fs {
+		display: flex;
+		align-items: flex-start;
+	}
+	.fcc {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	.fcol {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.rel { position: relative }
+	.abs { position: absolute }
+
+	.between {
+		justify-content: space-between;
+	}
+	.g32 { gap: 32px }
+	.p32 { padding: 32px }
+	.grow {
+		flex: 1;
+	}
+
+	.center {
+		text-align: center;
+	}
+
+	.deco {
+		position: absolute;
+		z-index: -1;
+	}
+	.btn {
+		padding: 20px 35px;
+		color: var(--blue);
+		background: var(--sky);
+		border: 1px solid var(--sky);
+		border-radius: 14px;
+		transition: 0.2s ease-out;
+		cursor: pointer;
+	}
+	.btn-outline {
+		border: 1px solid var(--blue);
+		background: transparent;
+	}
+	.btn:hover {
+		background: #53bbaf;
+	}
+	.btn-outline:hover {
+		background: var(--gray)
+	}
+	.btn:active {
+		scale: 0.95;
+	}
+	.ma {
+		max-width: 1272px;
+		margin: auto;
+	}
+	/* :root {
+		--accent: 136, 58, 234;
+		--accent-light: 224, 204, 250;
+		--accent-dark: 49, 10, 101;
+		--accent-gradient: linear-gradient(
+			45deg,
+			rgb(var(--accent)),
+			rgb(var(--accent-light)) 30%,
+			white 60%
+		);
+	}
+	html {
+		font-family: system-ui, sans-serif;
+		background: #13151a;
+	}
+	code {
+		font-family:
+			Menlo,
+			Monaco,
+			Lucida Console,
+			Liberation Mono,
+			DejaVu Sans Mono,
+			Bitstream Vera Sans Mono,
+			Courier New,
+			monospace;
+	}*/
+</style>
