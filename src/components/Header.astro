@@ -18,7 +18,7 @@
 		<a href="#" class="link">Beneficios</a>
 		<a href="#" class="link">Testimonios</a>
 		<a href="#" class="link">Demo</a>
-		<a href="#" class="btn btn-outline">Notificarme</a>
+		<a href="#" class="btn btn-outline" data-text="Notificarme">Notificarme</a>
 	</nav>
 	<button id="burger_btn" type="button" aria-label="Menú">
 		<svg width="26" height="18" viewBox="0 0 26 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -37,12 +37,13 @@
 		gap: 24px;
 	}
 	.link {
+		text-align: center;
 		padding: 0 8px;
 		will-change: background-position;
 		background: linear-gradient(90deg, var(--sky) 50%, transparent 50%);
 		background-size: 200% 100%;
 		background-position: 100% 0;
-		transition: 0.2s ease-out;
+		transition: 0.25s ease-out;
 	}
 	.link:hover {
 		background-position: 0 0;

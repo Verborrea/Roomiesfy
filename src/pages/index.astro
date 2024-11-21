@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
 import { Image } from 'astro:assets';
 
 import hero from '../images/image.png'
@@ -14,42 +15,40 @@ import third from '../images/third.png'
 	<main>
 		<section class="hero rel">
 			<Image src={hero} width={hero.width/2} densities={[1,2]} alt="Chicas japonesas" />
-			<div class="gradient">
-				<div class="space">
-					<div class="max fcol">
-						<h1>Encuentra a tu roomie ideal en Perú con Roomiesfy</h1>
-						<p>La app que conecta a personas compatibles para compartir hogar de forma segura, eficiente y divertida.</p>
-						<div class="fc btns">
-							<div class="btn">Mira el demo</div>
-							<div class="btn btn-outline">Sé el primero en enterarte</div>
-						</div>
+			<div class="space fs">
+				<div class="fcol max">
+					<h1>Encuentra a tu roomie ideal en Perú con Roomiesfy</h1>
+					<p>La app que conecta a personas compatibles para compartir hogar de forma segura, eficiente y divertida.</p>
+					<div class="fc btns">
+						<div class="btn" data-text="Ver demo">Mira el demo</div>
+						<div class="btn btn-outline" data-text="Quiero ser el primero">Sé el primero en enterarte</div>
 					</div>
 				</div>
 			</div>
 		</section>
-		<section class="whatis ma">
+		<section class="content ma fs">
 			<h1 class="h1">¿Qué es Roomiesfy?</h1>
 			<p>“Roomiesfy es la nueva app que facilita la búsqueda de roommates compatibles y seguros en Perú. Diseñada para jóvenes profesionales, estudiantes y cualquier persona que busque y quiera compartir un lugar para vivir con tranquilidad y buena compañía.”</p>
 		</section>
-		<section class="beneficios fcol ma">
+		<section class="beneficios fcol ma fs">
 			<h1 class="h1">Beneficios destacados:</h1>
 			<div class="articles">
 				<article class="card fc">
-					<div class="text">
+					<div class="text fcol fs">
 						<h1 class="fcol"><span>Compatibilidad</span> <span>Asegurada</span></h1>
 						<p>Sistema de matching avanzado que conecta con personas de intereses, hábitos y estilos de vida similares.</p>
 					</div>
 					<Image src={first} width={first.width/2} densities={[1,2]} alt="Chicas japonesas" />
 				</article>
 				<article class="card fc">
-					<div class="text">
+					<div class="text fcol fs">
 						<h1 class="fcol"><span>Contratos</span> <span>automáticos</span> <span>y seguros</span></h1>
 						<p>Generación de contratos personalizados con soporte legal opcional.</p>
 					</div>
 					<Image src={second} width={second.width/2} densities={[1,2]} alt="Chicas japonesas" />
 				</article>
 				<article class="card fc">
-					<div class="text">
+					<div class="text fcol fs">
 						<h1 class="fcol"><span>Soporte de IA</span> <span>todo momento</span></h1>
 						<p>Chatbot integrado para responder preguntas sobre los espacios, los roommates y el proceso de alquiler.</p>
 					</div>
@@ -57,19 +56,36 @@ import third from '../images/third.png'
 				</article>
 			</div>
 		</section>
+		<section class="content ma fs">
+			<h1 class="h1">¿Cómo funciona Roomiesfy?</h1>
+			<p>Con Roomiesfy, encontrar a tu roommate ideal será <strong>fácil</strong> y <em>seguro</em>. Así es cómo funciona.</p>
+		</section>
+		<section class="content ma fs">
+			<h1 class="h1">Demo de Roomiesfy</h1>
+			<div class="fcol">
+				<p><strong>Explora Roomiesfy.</strong></p>
+				<p>Conoce cómo Roomiesfy facilita la búsqueda de roommates y la gestión de contratos en un recorrido interactivo de la app</p>
+			</div>
+		</section>
+		<section class="content ma fs">
+			<h1 class="h1">Testimonios</h1>
+			<div class="fcol">
+				<p><strong>¿Por qué los peruanos eligirán Roomiesfy?</strong></p>
+				<p>Escucha lo que estudiantes, jóvenes profesionales y extranjeros esperan de la app que cambiará la manera de buscar vivienda compartida en Perú.</p>
+			</div>
+		</section>
+		<section class="content ma fs">
+			<h1 class="h1">Sé el primero en enterarte</h1>
+			<div class="fcol">
+				<p><strong>¿Quieres saber cuándo Roomiesfy estará disponible?</strong></p>
+				<p>Déjanos tus datos y sé el primero en recibir noticias sobre el lanzamiento</p>
+			</div>
+		</section>
 	</main>
+	<Footer/>
 </Layout>
 
 <style>
-	.h1 {
-		font-weight: 500;
-		flex-shrink: 0;	
-		padding: 4px 20px;
-		border-radius: 32px;
-		background: #A7EDE4;
-		box-shadow: -8px 0px #BBF2EA, -16px 0px #D7F7F3;
-		margin-left: 16px;
-	}
 	.hero {
 		overflow: hidden;
 		img {
@@ -80,14 +96,9 @@ import third from '../images/third.png'
 			z-index: -1;
 			inset: 0;
 		}
-		.gradient {
-			padding: 144px 16px;
-			background: linear-gradient(90deg, white, transparent 40%), linear-gradient(0deg, white, transparent 40%);
-			display: flex;
-			justify-content: flex-start;
-		}
 		.space {
-			max-width: 1240px;
+			padding: 144px 16px;
+			max-width: 1272px;
 			width: 100%;
 			margin: auto;
 		}
@@ -103,16 +114,14 @@ import third from '../images/third.png'
 			color: var(--blue);
 		}
 	}
-	.whatis {
+	.content, .beneficios {
 		padding: 16px;
-		display: flex;
-		align-items: flex-start;
+	}
+	.content {
 		margin-block: 96px;
 		gap: 28px;
 	}
 	.beneficios {
-		padding: 16px;
-		align-items: flex-start;
 		.h1 {
 			margin-bottom: 48px;
 		}
@@ -131,12 +140,8 @@ import third from '../images/third.png'
 		gap: 16px;
 
 		.text {
-			display: flex;
-			flex-direction: column;
-			align-items: flex-start;
 			gap: 16px;
 		}
-
 		span {
 			width: fit-content;
 			background: var(--sky);
@@ -151,13 +156,13 @@ import third from '../images/third.png'
 			transform: translateY(-16px);
 		}
 	}
-	.card:nth-child(2) {
+	.articles .card:nth-child(2) {
 		background: var(--sky);
 		span {
 			background: white;
 		}
 	}
-	.card:nth-child(3) {
+	.articles .card:nth-child(3) {
 		color: white;
 		background: var(--blue);
 		justify-self: center;
@@ -169,7 +174,12 @@ import third from '../images/third.png'
 		}
 	}
 	@media (max-width: 1000px) {
-		.whatis {
+		.hero {
+			.space {
+				padding: 144px 24px;
+			}
+		}
+		.content {
 			flex-direction: column;
 		}
 		.beneficios {
@@ -178,43 +188,47 @@ import third from '../images/third.png'
 				grid-template-columns: 1fr;
 			}
 		}
+		.content, .beneficios {
+			padding: 24px;
+		}
 		.card {
 			flex-direction: column;
 		}
-		.card:nth-child(3) {
+		.articles .card:nth-child(3) {
 			grid-column: unset;
 			max-width: unset;
 		}
 	}
 	@media (max-width: 700px) {
-		.h1 {
-			text-align: center;
-		}
 		.hero {
 			h1 {
 				font-size: 40px;
 			}
+			.space {
+				padding: 32px 24px;
+				min-height: calc(100vh - 96px);
+				align-items: flex-end;
+			}
+			.btns {
+				gap: 16px;
+			}
+			.btns {
+				flex-direction: column;
+				align-items: stretch;
+			}
 		}
-		.gradient {
-			padding: 64px 16px;
-		}
-		.whatis {
-			margin-block: 32px;
+		.content {
+			margin-block: 48px;
 			align-items: center;
-			text-align: center;
-		}
-		.btns {
-			flex-direction: column;
-			align-items: stretch;
 			text-align: center;
 		}
 		.card {
 			padding: 24px;
-		}
-		.card img {
-			height: unset;
-			width: 40%;
-			align-self: flex-end;
+			img {
+				height: unset;
+				width: 40%;
+				align-self: flex-end;
+			}
 		}
 	}
 </style>
