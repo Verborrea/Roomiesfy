@@ -1,0 +1,19 @@
+---
+	import { Image } from 'astro:assets';
+
+	import hero from '../images/image.png'
+---
+
+<section class="hero rel">
+	<Image src={hero} width={hero.width/2} densities={[1,2]} alt="Chicas japonesas" />
+	<div class="space fs">
+		<div class="fcol max">
+			<h1>Encuentra a tu roomie ideal en Perú con Roomiesfy</h1>
+			<p>La app que conecta a personas compatibles para compartir hogar de forma segura, eficiente y divertida.</p>
+			<div class="fc btns">
+				<div class="btn" data-text="Ver demo">Mira el demo</div>
+				<div class="btn btn-outline" data-text="Quiero ser el primero">Sé el primero en enterarte</div>
+			</div>
+		</div>
+	</div>
+</section>
