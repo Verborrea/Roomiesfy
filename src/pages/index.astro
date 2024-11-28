@@ -1,4 +1,6 @@
 ---
+export const prerender = true;
+
 import Layout from "../layouts/Layout.astro";
 import Paso from "../components/Paso.astro";
 import Header from "../components/Header.astro";
@@ -127,21 +129,21 @@ import third from "../images/third.png"
 				<path d="M431 63.5L300.163 4.92862C292.571 -0.409531 282.414 -1.59008 273.642 2.97814L172.998 55.0251V27.7184C172.998 -5.37549 121.701 -5.37548 121.701 27.7184V267.627C121.701 300.721 172.998 300.721 172.998 267.627V112.872L285.594 54.6658L410.5 110C441.51 124.181 464 80 431 63.5Z" fill="#76E2D5"/>
 				</g>
 			</svg>
-			<form class="fcol rel">
+			<form action="gracias" method="get" class="fcol rel">
 				<label for="name" class="fcol">
 					<span>Nombre</span>
-					<input type="text" id="name" name="name" placeholder="José Perez">
+					<input type="text" id="name" name="name" placeholder="José Perez" required>
 				</label>
 				<label for="email" class="fcol">
 					<span>Email*</span>
-					<input type="email" id="email" name="email" placeholder="joseperez@tucorreo.com">
+					<input type="email" id="email" name="email" placeholder="joseperez@tucorreo.com" required>
 				</label>
 				<label for="city" class="fcol">
 					<span>Ciudad*</span>
-					<input type="text" id="city" name="city" placeholder="Arequipa">
+					<input type="text" id="city" name="city" placeholder="Arequipa" required>
 				</label>
 				<label for="noti" class="fc">
-					<input type="checkbox" name="noti" id="noti">
+					<input type="checkbox" name="noti" id="noti" required>
 					<span>Recibir notificaciones de lanzamiento y promociones</span>
 				</label>
 				<button type="submit" class="btn" data-text="Quiero saber más">Notificarme sobre el lanzamiento</button>
@@ -214,7 +216,6 @@ import third from "../images/third.png"
 			scrollbar-width: none; /* Firefox */
 			-ms-overflow-style: none; /* Internet Explorer y Edge antiguo */
 		}
-
 		.content::-webkit-scrollbar {
 			display: none; /* Chrome, Safari y Edge */
 		}
@@ -225,6 +226,12 @@ import third from "../images/third.png"
 		}
 		label[for="noti"] {
 			gap: 12px;
+		}
+		#noti {
+			accent-color: var(--sky);
+		}
+		#noti:focus {
+			outline: 2px solid #cdede9;
 		}
 		form {
 			gap: 24px;
