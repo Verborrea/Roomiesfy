@@ -1,53 +1,128 @@
-<section class="fc">
-	<article>
-		<blockquote>
-			"Es justo lo que necesito para encontrar un lugar cómodo y seguro mientras estudio en la universidad."
-		</blockquote>
-		<footer>
-			<h1>Sofía R.</h1>
-			<p>Estudiante</p>
-		</footer>
-	</article>
-	<article>
-		<blockquote>
-			"Estoy ansioso por usar Roomify. Me encanta la idea de encontrar roomies que realmente sean compatibles conmigo."
-		</blockquote>
-		<footer>
-			<h1>Diego M.</h1>
-			<p>Freelancer</p>
-		</footer>
-	</article>
-	<article>
-		<blockquote>
-			"Finalmente podré publicar mis propiedades de forma sencilla y conectar con personas de confianza."
-		</blockquote>
-		<footer>
-			<h1>Marcela S.</h1>
-			<p>Propietaria</p>
-		</footer>
-	</article>
+<section class="slider" id="slider">
+	<div class="slider-track">
+		<article>
+			<blockquote>
+				"Es justo lo que necesito para encontrar un lugar cómodo y seguro mientras estudio en la universidad."
+			</blockquote>
+			<footer>
+				<h1>Sofía R.</h1>
+				<p>Estudiante</p>
+			</footer>
+		</article>
+		<article>
+			<blockquote>
+				"Estoy ansioso por usar Roomify. Me encanta la idea de encontrar roomies que realmente sean compatibles conmigo."
+			</blockquote>
+			<footer>
+				<h1>Diego M.</h1>
+				<p>Freelancer</p>
+			</footer>
+		</article>
+		<article>
+			<blockquote>
+				"Finalmente podré publicar mis propiedades de forma sencilla y conectar con personas de confianza."
+			</blockquote>
+			<footer>
+				<h1>Marcela S.</h1>
+				<p>Propietaria</p>
+			</footer>
+		</article>
+	</div>
 </section>
 <nav class="fc between">
-	<button type="button" aria-label="Anterior">
+	<button type="button" id="prev" aria-label="Anterior">
 		<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--white)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
 	</button>
 	<div class="fc circles">
 		<div class="circle"></div>
-		<div class="circle"></div>
+		<div class="circle active"></div>
 		<div class="circle"></div>
 	</div>
-	<button type="button" aria-label="Siguiente">
+	<button type="button" id="next" aria-label="Siguiente">
 		<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--white)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
 	</button>
 </nav>
+<script>
+	const slider = document.getElementById("slider");
+	const track = slider.querySelector(".slider-track") as HTMLElement;
+	const articles = Array.from(track.children);
+	const circles = document.querySelectorAll(".circle");
+	const prevButton = document.getElementById("prev");
+	const nextButton = document.getElementById("next");
+
+	let index = 0;
+
+	// Clonar nodos para infinito
+	const firstClone = articles[0].cloneNode(true);
+	const lastClone = articles[articles.length - 1].cloneNode(true);
+	track.appendChild(firstClone);
+	track.insertBefore(lastClone, track.firstChild);
+
+	// Ajustar transform para el nodo inicial
+	const totalSlides = articles.length;
+	const updateTransform = () => {
+		track.style.transform = `translateX(-${(index + 1) * 10}%)`;
+	};
+	updateTransform();
+
+	// Actualizar círculos
+	const updateCircles = () => {
+		circles.forEach((circle, i) => {
+			circle.classList.toggle("active", i === (index % totalSlides));
+		});
+	};
+	updateCircles();
+
+	// Manejar botones
+	const goToSlide = (newIndex) => {
+		index = (newIndex + totalSlides) % totalSlides;
+		updateTransform();
+		updateCircles();
+	};
+
+	nextButton.addEventListener("click", () => goToSlide(index + 1));
+	prevButton.addEventListener("click", () => goToSlide(index - 1));
+
+	// Animación infinita
+	track.addEventListener("transitionend", () => {
+		if (index === -1) {
+			index = totalSlides - 1;
+			track.style.transition = "none";
+			updateTransform();
+			setTimeout(() => (track.style.transition = "transform 0.5s ease-in-out"), 0);
+		} else if (index === totalSlides) {
+			index = 0;
+			track.style.transition = "none";
+			updateTransform();
+			setTimeout(() => (track.style.transition = "transform 0.5s ease-in-out"), 0);
+		}
+	});
+
+	// Scroll táctil
+	let startX = 0;
+	slider.addEventListener("touchstart", (e) => {
+		startX = e.touches[0].clientX;
+	});
+
+	slider.addEventListener("touchmove", (e) => {
+		const diffX = e.touches[0].clientX - startX;
+		if (Math.abs(diffX) > 50) {
+			if (diffX > 0) goToSlide(index - 1);
+			else goToSlide(index + 1);
+			startX = 0; // Reset para evitar múltiples movimientos
+		}
+	});
+</script>
 
 <style>
 	section{
-		overflow-x: scroll;
+		overflow-x: hidden;
 		gap: 48px;
 	}
 	article {
-		min-width: 500px;
+    min-width: 500px;
+    display: flex;
+    flex-direction: column;
 	}
 	blockquote {
 		position: relative;
@@ -55,6 +130,7 @@
 		padding: 48px 48px 96px;
 		border-radius: 48px;
 		margin-bottom: 32px;
+		flex: 1;
 	}
 	blockquote::before {
 		position: absolute;
@@ -86,9 +162,14 @@
 		padding-left: 48px;
 	}
 	nav {
-		align-self: center;
 		width: 100%;
 		max-width: 560px;
+	}
+	.slider-track {
+		display: flex;
+		align-items: stretch;
+		gap: 48px;
+		transition: transform 0.5s ease-in-out;
 	}
 	.circles {
 		gap: 8px;
@@ -98,6 +179,9 @@
 		width: 18px;
 		height: 18px;
 		background: var(--gray);
+	}
+	.circle.active {
+		background: var(--sky);
 	}
 	@media (max-width: 1000px) {
 		section {
