@@ -15,11 +15,11 @@
 			<path d="M208.78 12.0742C211.32 11.9514 215.093 12.6227 216.613 14.8903C218.257 17.3461 215.857 19.9084 213.087 19.1144C211.936 18.7869 208.78 16.2001 208.007 17.9192C207.144 19.8266 212.29 20.5797 213.399 20.9481C217.468 22.2906 219.679 25.1148 218.422 29.5354C216.465 36.42 205.632 36.6492 201.457 31.9421C199.172 29.3635 200.183 25.1721 204.013 25.8189C206.544 26.2445 207.67 29.8956 210.983 29.0933C212.158 28.8068 212.528 27.2187 211.493 26.5884C210.292 25.8598 207.44 25.475 205.895 24.8365C198.3 21.6685 200.659 12.459 208.78 12.0579V12.0742Z" fill="#0C2E39"/>
 		</svg>
 		<nav class="fc">
-			<a href="#" class="link">Sobre nosotros</a>
-			<a href="#" class="link">Beneficios</a>
-			<a href="#" class="link">Testimonios</a>
-			<a href="#" class="link">Demo</a>
-			<a href="#" class="btn btn-outline" data-text="Notificarme">Notificarme</a>
+			<a href="#que" class="link">Sobre nosotros</a>
+			<a href="#beneficios" class="link">Beneficios</a>
+			<a href="#testimonios" class="link">Testimonios</a>
+			<a href="#demo" class="link">Demo</a>
+			<a href="#contacto" class="btn btn-outline" data-text="Notificarme">Notificarme</a>
 		</nav>
 		<button id="burger_btn" type="button" aria-label="Menú">
 			<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -35,6 +35,16 @@
 	burger_btn.addEventListener('click', () => {
 		document.querySelector('#header').classList.toggle('active')
 	})
+	const links = document.querySelectorAll('#header .link');
+
+	links.forEach(link => {
+			link.addEventListener('click', () => {
+					const header = document.querySelector('#header');
+					if (header.classList.contains('active')) {
+							header.classList.remove('active');
+					}
+			});
+	});
 </script>
 
 <style>
@@ -98,6 +108,7 @@
 			font-size: 22px;
 		}
 		header.active {
+			position: fixed;
 			nav {
 				transform: translateX(0);
 			}

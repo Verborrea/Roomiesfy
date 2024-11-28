@@ -16,7 +16,7 @@ import third from "../images/third.png"
 <Layout title="Roomiesfy">
 	<Header />
 	<Hero />
-	<section class="que">
+	<section id="que" class="que">
 		<header>
 			<h1>¿Qué es Roomiesfy?</h1>
 			<p>
@@ -27,7 +27,7 @@ import third from "../images/third.png"
 			</p>
 		</header>
 	</section>
-	<section class="beneficios">
+	<section id="beneficios" class="beneficios">
 		<header>
 			<h1>Beneficios destacados:</h1>
 		</header>
@@ -81,7 +81,7 @@ import third from "../images/third.png"
 			<Image src={iphone} alt="Caputura de la aplicación de Roomiesfy" width={iphone.width/2} densities={[1,2]} format="avif"/>
 		</div>
 	</section>
-	<section class="demo">
+	<section id="demo" class="demo">
 		<header>
 			<h1>Demo de Roomiesfy</h1>
 			<p>
@@ -91,7 +91,7 @@ import third from "../images/third.png"
 			</p>
 		</header>
 	</section>
-	<section class="testimonios">
+	<section id="testimonios" class="testimonios">
 		<header>
 			<h1>Testimonios</h1>
 			<p>
@@ -104,7 +104,7 @@ import third from "../images/third.png"
 			<Carousel/>
 		</div>
 	</section>
-	<section class="contacto">
+	<section id="contacto" class="contacto">
 		<header>
 			<h1>Sé el primero en enterarte</h1>
 			<p>
@@ -113,19 +113,14 @@ import third from "../images/third.png"
 				lanzamiento.
 			</p>
 		</header>
-		<div class="content fs">
-			<svg class="abs" width="447" height="399" viewBox="0 0 447 399" fill="none" xmlns="http://www.w3.org/2000/svg">
-				<g opacity="0.33" clip-path="url(#clip0_18_61)">
-				<path d="M225.962 287.85C192.497 361.653 80.2842 368.33 49.5527 288.261C37.706 257.369 -10.2111 275.729 1.64155 306.637C49.0671 430.089 220.506 423.947 272.642 309.049C286.542 278.426 239.834 257.167 225.962 287.85Z" fill="#76E2D5"/>
-				<path d="M430 63.5L299.163 4.92862C291.571 -0.409531 281.414 -1.59008 272.642 2.97814L171.998 55.0251V27.7184C171.998 -5.37549 120.701 -5.37548 120.701 27.7184V267.627C120.701 300.721 171.998 300.721 171.998 267.627V112.872L284.594 54.6658L409.5 110C440.51 124.181 463 80 430 63.5Z" fill="#76E2D5"/>
+		<div class="content rel fc">
+			<svg class="abs" width="448" height="399" viewBox="0 0 448 399" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<g opacity="0.33">
+				<path d="M226.962 287.85C193.497 361.653 81.2842 368.33 50.5527 288.261C38.706 257.369 -9.21108 275.729 2.64155 306.637C50.0671 430.089 221.506 423.947 273.642 309.049C287.542 278.426 240.834 257.167 226.962 287.85Z" fill="#76E2D5"/>
+				<path d="M431 63.5L300.163 4.92862C292.571 -0.409531 282.414 -1.59008 273.642 2.97814L172.998 55.0251V27.7184C172.998 -5.37549 121.701 -5.37548 121.701 27.7184V267.627C121.701 300.721 172.998 300.721 172.998 267.627V112.872L285.594 54.6658L410.5 110C441.51 124.181 464 80 431 63.5Z" fill="#76E2D5"/>
 				</g>
-				<defs>
-				<clipPath id="clip0_18_61">
-				<rect width="447" height="398" fill="white" transform="translate(0 0.155273)"/>
-				</clipPath>
-				</defs>
-			</svg>	
-			<form class="fcol">
+			</svg>
+			<form class="fcol rel">
 				<label for="name" class="fcol">
 					<span>Nombre</span>
 					<input type="text" id="name" name="name" placeholder="José Perez">
@@ -203,6 +198,7 @@ import third from "../images/third.png"
 	}
 	.testimonios {
 		.content {
+			overflow-x: hidden;
 			background: var(--blue);
 			padding-block: 64px;
 			gap: 64px;
@@ -221,7 +217,7 @@ import third from "../images/third.png"
 			gap: 24px;
 		}
 		svg {
-			z-index: -1;
+			right: 64px;
 		}
 		input {
 			color: black;
@@ -342,6 +338,12 @@ import third from "../images/third.png"
 			}
 			.fcol {
 				width: 100%;
+			}
+			svg {
+				width: calc(100% - 48px);
+				height: auto;
+				right: 24px;
+				left: 24px;
 			}
 		}
 		.beneficios {
