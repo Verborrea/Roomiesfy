@@ -2,6 +2,24 @@
 	<div class="slider-track">
 		<article>
 			<blockquote>
+				"Estoy ansioso por usar Roomify. Me encanta la idea de encontrar roomies que realmente sean compatibles conmigo."
+			</blockquote>
+			<footer>
+				<h1>Diego M.</h1>
+				<p>Freelancer</p>
+			</footer>
+		</article>
+		<article>
+			<blockquote>
+				"Finalmente podré publicar mis propiedades de forma sencilla y conectar con personas de confianza."
+			</blockquote>
+			<footer>
+				<h1>Marcela S.</h1>
+				<p>Propietaria</p>
+			</footer>
+		</article>
+		<article>
+			<blockquote>
 				"Es justo lo que necesito para encontrar un lugar cómodo y seguro mientras estudio en la universidad."
 			</blockquote>
 			<footer>
@@ -27,6 +45,24 @@
 				<p>Propietaria</p>
 			</footer>
 		</article>
+		<article>
+			<blockquote>
+				"Es justo lo que necesito para encontrar un lugar cómodo y seguro mientras estudio en la universidad."
+			</blockquote>
+			<footer>
+				<h1>Sofía R.</h1>
+				<p>Estudiante</p>
+			</footer>
+		</article>
+		<article>
+			<blockquote>
+				"Estoy ansioso por usar Roomify. Me encanta la idea de encontrar roomies que realmente sean compatibles conmigo."
+			</blockquote>
+			<footer>
+				<h1>Diego M.</h1>
+				<p>Freelancer</p>
+			</footer>
+		</article>
 	</div>
 </section>
 <nav class="fc between">
@@ -35,7 +71,7 @@
 	</button>
 	<div class="fc circles">
 		<div class="circle"></div>
-		<div class="circle active"></div>
+		<div class="circle"></div>
 		<div class="circle"></div>
 	</div>
 	<button type="button" id="next" aria-label="Siguiente">
@@ -50,18 +86,13 @@
 	const prevButton = document.getElementById("prev");
 	const nextButton = document.getElementById("next");
 
-	let index = 0;
-
-	// Clonar nodos para infinito
-	const firstClone = articles[0].cloneNode(true);
-	const lastClone = articles[articles.length - 1].cloneNode(true);
-	track.appendChild(firstClone);
-	track.insertBefore(lastClone, track.firstChild);
+	let index = 1; // 0 1 2 3 4
 
 	// Ajustar transform para el nodo inicial
-	const totalSlides = articles.length;
+	const totalSlides = 3
+
 	const updateTransform = () => {
-		track.style.transform = `translateX(-${(index + 1) * 10}%)`;
+		track.style.transform = `translateX(${-(index - 1) * 100 / 7}%)`;
 	};
 	updateTransform();
 
@@ -74,8 +105,13 @@
 	updateCircles();
 
 	// Manejar botones
-	const goToSlide = (newIndex) => {
-		index = (newIndex + totalSlides) % totalSlides;
+	const goToSlide = (newIndex: number) => {
+		index = newIndex;
+		if (newIndex > 4) {
+			index = 0
+		} else if (newIndex < -1) {
+			index = 2
+		}
 		updateTransform();
 		updateCircles();
 	};
@@ -85,15 +121,17 @@
 
 	// Animación infinita
 	track.addEventListener("transitionend", () => {
-		if (index === -1) {
+		if (index <= -1) {
 			index = totalSlides - 1;
 			track.style.transition = "none";
 			updateTransform();
+			updateCircles();
 			setTimeout(() => (track.style.transition = "transform 0.5s ease-in-out"), 0);
-		} else if (index === totalSlides) {
+		} else if (index >= totalSlides) {
 			index = 0;
 			track.style.transition = "none";
 			updateTransform();
+			updateCircles();
 			setTimeout(() => (track.style.transition = "transform 0.5s ease-in-out"), 0);
 		}
 	});
@@ -104,9 +142,9 @@
 		startX = e.touches[0].clientX;
 	});
 
-	slider.addEventListener("touchmove", (e) => {
-		const diffX = e.touches[0].clientX - startX;
-		if (Math.abs(diffX) > 50) {
+	slider.addEventListener("touchend", (e) => {
+		const diffX = e.changedTouches[0].clientX - startX;
+		if (Math.abs(diffX) > 100) {
 			if (diffX > 0) goToSlide(index - 1);
 			else goToSlide(index + 1);
 			startX = 0; // Reset para evitar múltiples movimientos
@@ -120,9 +158,9 @@
 		gap: 48px;
 	}
 	article {
-    min-width: 500px;
-    display: flex;
-    flex-direction: column;
+		min-width: 500px;
+		display: flex;
+		flex-direction: column;
 	}
 	blockquote {
 		position: relative;
@@ -165,6 +203,9 @@
 		width: 100%;
 		max-width: 560px;
 	}
+	button:hover svg {
+		stroke: var(--sky);
+	}
 	.slider-track {
 		display: flex;
 		align-items: stretch;
@@ -187,13 +228,9 @@
 		section {
 			gap: 24px;
 		}
-		article {
-			max-width: calc(100vw - 96px);
-		}
 		blockquote {
 			padding: 24px 24px 48px;
 			border-radius: 24px;
-			max-width: calc(100vw - 96px);
 		}
 		blockquote::before {
 			left: 26px;
@@ -206,6 +243,12 @@
 		footer {
 			padding-left: 24px;
 		}
-		
+	}
+	@media (max-width: 700px) {
+		article {
+			width: calc(100vw - 96px);
+			max-width: unset;
+			min-width: unset;
+		}
 	}
 </style>
