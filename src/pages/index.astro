@@ -100,7 +100,7 @@ import third from "../images/third.png"
 				app que cambiará la manera de buscar vivienda compartida en Perú.
 			</p>
 		</header>
-		<div class="content fcol fc">
+		<div class="content fcol fs">
 			<Carousel/>
 		</div>
 	</section>
@@ -198,12 +198,18 @@ import third from "../images/third.png"
 	}
 	.testimonios {
 		.content {
-			overflow-x: hidden;
+			overflow-x: scroll;
 			background: var(--blue);
-			padding-block: 64px;
+			padding: 64px;
 			gap: 64px;
 			border-radius: 48px;
 			color: var(--white);
+			scrollbar-width: none; /* Firefox */
+			-ms-overflow-style: none; /* Internet Explorer y Edge antiguo */
+		}
+
+		.content::-webkit-scrollbar {
+			display: none; /* Chrome, Safari y Edge */
 		}
 	}
 	.contacto {
